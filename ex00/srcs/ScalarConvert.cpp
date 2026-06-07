@@ -1,6 +1,11 @@
-#include "../includes/ScalarConvert.hpp"
+#include "../includes/ScalarConverter.hpp"
 
-ScalarConvert::ScalarConvert();
-ScalarConvert::ScalarConvert(const ScalarConvert& src) {this = src;}
-ScalarConvert& ScalarConvert::operator=(const ScalarConvert& src);
-ScalarConvert::~ScalarConvert();
+ScalarConverter::ScalarConverter() {}
+ScalarConverter::ScalarConverter(const ScalarConverter& src) {*this = src;}
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& src) {}
+ScalarConverter::~ScalarConverter() {}
+
+void ScalarConverter::convert(std::string input)
+{
+
+}

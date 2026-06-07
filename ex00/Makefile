@@ -1,11 +1,11 @@
 NAME     = InternFormUp
 CXX      = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I. -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I.
 
 SRCS_DIR = srcs/
 OBJ_DIR  = .obj/
 
-SRCS     = $(SRCS_DIR)main.cpp
+SRCS     = $(SRCS_DIR)main.cpp $(SRCS_DIR)ScalarConvert.cpp
 
 OBJ     = $(SRCS:$(SRCS_DIR)%.cpp=$(OBJ_DIR)%.o)
 
