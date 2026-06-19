@@ -4,12 +4,12 @@
 
 class ScalarConverter
 {
-	public:
-		ScalarConverter();
-		ScalarConverter(const ScalarConverter&);
-		ScalarConverter& operator=(const ScalarConverter&);
-		~ScalarConverter();
-		static void convert(std::string input);
-}
+public:
+	ScalarConverter();// a mettre en privée//
+	ScalarConverter(const ScalarConverter&);
+	ScalarConverter& operator=(const ScalarConverter&);
+	virtual ~ScalarConverter();
+	static void convert(std::string input);
+};
 
 #endif
