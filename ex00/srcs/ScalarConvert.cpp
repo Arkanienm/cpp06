@@ -9,11 +9,6 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& src)
 	return *this;
 }
 ScalarConverter::~ScalarConverter() {}
-/*
-static void displayConvert(double d, bool isFloat)
-{
-
-}
 
 static bool isChar(const std::string& input)
 {
@@ -71,7 +66,55 @@ static bool isFloat(const std::string& input)
 		return false;
 	return true;
 }
-*/
+
+static int checkDecimal(std::string input)
+{
+	int dec = 0;
+	size_t i = 0;
+	for (i = 0; i < input.length(); i++)
+	{
+		if (input.at(i) == '.')
+		{
+			i++;
+			break;
+		}
+	}
+	for (size_t a = i; a < input.length(); a++)
+	{
+		if (isdigit(input.at(a)))
+			dec++;
+	}
+	return dec;
+}
+
+static void displayALL(double d, std::string input)
+{
+	int dec = checkDecimal(input);
+	if (std::isnan(d) || std::isinf(d) || d < 0 || d > 127 || !isprint(static_cast<unsigned char>(d)))
+		std::cout << "char :" << "not displayable" << std::endl;
+	else
+		std::cout << "char :" << static_cast<unsigned char>(d) << std::endl;
+	if (std::isnan(d) || std::isinf(d) || d > 2147483647 || d < -2147483648)
+		std::cout << "int : out of limits" << std::endl;
+	else
+		std::cout << "int :" << static_cast<int>(d) << std::endl;
+	if (std::isnan(d) || std::isinf(d))
+	{
+		std::cout << "double :" << d << std::endl;
+		std::cout << "float :" << d << "f" << std::endl;
+	}
+	else if (std::floor(d) - d == 0)
+	{
+		std::cout << "double :" << std::fixed << std::setprecision(1) << d << std::endl;
+		std::cout << "float :" << std::setprecision(1) << d << "f" << std::endl;
+	}
+	else
+	{
+		std::cout << std::showpoint << std::setprecision(dec + 1) << "double :" << d << std::endl;
+		std::cout << std::showpoint << std::setprecision(dec + 1) << "float :" << static_cast<float>(d) << "f" <<  std::endl;
+	}
+}
+
 void ScalarConverter::convert(std::string input)
 {
 	if (input.empty())
@@ -84,4 +127,18 @@ void ScalarConverter::convert(std::string input)
 			return;
 		}
 	}
+	char *endptr;
+	double d = strtod(input.c_str(), &endptr);
+	if (isChar(input))
+	{
+		d = static_cast<double>(input.at(0));
+		displayALL(d, input);
+		return ;
+	}
+	if (isInt(input) || isDouble(input) || isFloat(input))
+	{
+		displayALL(d, input);
+		return ;
+	}
+	std::cout << "Error : You can't convert a wrong input" << std::endl;
 }

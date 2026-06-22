@@ -6,11 +6,13 @@
 #include <limits>
 #include <cmath>
 #include <iostream>
+#include <cstdlib>
+#include <iomanip>
 
 class ScalarConverter
 {
 public:
-	ScalarConverter();// a mettre en privée//
+	ScalarConverter();
 	ScalarConverter(const ScalarConverter&);
 	ScalarConverter& operator=(const ScalarConverter&);
 	virtual ~ScalarConverter();
