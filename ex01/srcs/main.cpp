@@ -1,14 +1,14 @@
 #include <iostream>
 #include <ostream>
-#include "../includes/ScalarConverter.hpp"
+#include "../includes/Serializer.hpp"
 
-int main(int ac, char **av)
+int main()
 {
+	Data data;
+	std::cout << "data adresse : " << &data << std::endl;
+	uintptr_t ptr = Serializer::serialize(&data);
+	std::cout << "ptr : " << ptr << std::endl;
+	Data *data1 = Serializer::deserialize(ptr);
+	std::cout << "data1 adresse : " << data1 << std::endl;
 
-	if (ac != 2 || av[1][0] == 0)
-	{
-		std::cerr << "Error : you need one arguments" << std::endl;
-		return 1;
-	}
-	ScalarConverter::convert(av[1]);
 }
