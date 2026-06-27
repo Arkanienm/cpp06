@@ -1,15 +1,11 @@
-NAME     = Serialization
+NAME     = Identify
 CXX      = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I.
 
 SRCS_DIR = srcs/
 OBJ_DIR  = .obj/
 
-SRCS     = $(SRCS_DIR)main.cpp \
-		   $(SRCS_DIR)Base.cpp \
-		   $(SRCS_DIR)A.cpp \
-		   $(SRCS_DIR)B.cpp \
-		   $(SRCS_DIR)C.cpp
+SRCS     = $(SRCS_DIR)main.cpp $(SRCS_DIR)A.cpp
 
 OBJ     = $(SRCS:$(SRCS_DIR)%.cpp=$(OBJ_DIR)%.o)
 

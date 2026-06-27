@@ -90,18 +90,30 @@ static int checkDecimal(std::string input)
 static void displayALL(double d, std::string input)
 {
 	int dec = checkDecimal(input);
-	if (std::isnan(d) || std::isinf(d) || d < 0 || d > 127 || !isprint(static_cast<unsigned char>(d)))
+	if (std::isnan(d) || std::isinf(d) || d < 0 || d > 127)
+		std::cout << "char :" << "impossible" << std::endl;
+	else if (std::isnan(d) || std::isinf(d) || d < 0 || d > 127 || !isprint(static_cast<unsigned char>(d)))
 		std::cout << "char :" << "not displayable" << std::endl;
 	else
 		std::cout << "char :" << static_cast<unsigned char>(d) << std::endl;
-	if (std::isnan(d) || std::isinf(d) || d > 2147483647 || d < -2147483648)
+	if (std::isnan(d) || std::isinf(d))
+		std::cout << "int : impossible" << std::endl;
+	else if (d > 2147483647 || d < -2147483648)
 		std::cout << "int : out of limits" << std::endl;
 	else
 		std::cout << "int :" << static_cast<int>(d) << std::endl;
 	if (std::isnan(d) || std::isinf(d))
 	{
-		std::cout << "double :" << d << std::endl;
-		std::cout << "float :" << d << "f" << std::endl;
+		if (input.at(0) == '+')
+		{
+			std::cout << "double :" << "+" << d << std::endl;
+			std::cout << "float :" << "+" << d << "f" << std::endl;
+		}
+		else
+		{
+			std::cout << "double :" << d << std::endl;
+			std::cout << "float :" << d << "f" << std::endl;
+		}
 	}
 	else if (std::floor(d) - d == 0)
 	{

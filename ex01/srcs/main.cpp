@@ -7,7 +7,6 @@ int main()
 	Data data;
 	std::cout << "data adresse : " << &data << std::endl;
 	uintptr_t ptr = Serializer::serialize(&data);
-	std::cout << "ptr : " << ptr << std::endl;
 	Data *data1 = Serializer::deserialize(ptr);
 	std::cout << "data1 adresse : " << data1 << std::endl;
 
